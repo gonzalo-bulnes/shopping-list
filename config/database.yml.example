@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: shopping_list_development
+  pool: 5
+  username: shopping_list
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: shopping_list_test
+  pool: 5
+  username: shopping_list
+  password:
+
+# production not necessary to deploy to Heroku
