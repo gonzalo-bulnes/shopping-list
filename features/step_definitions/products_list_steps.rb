@@ -13,11 +13,19 @@ Given /^there are carrots, spinach and melon in the list of products$/ do
 end
 
 When /^I add a product to the list of products$/ do
-  @spinach = FactoryGirl.create(:product)
+  visit new_product_path
+
+  fill_in :name, with: "apples"
+  click_button "Create Product"
 end
 
 When /^I remove the carrots from the list of products$/ do
-  Product.find_by_name("carrots")
+  visit products_path
+
+  # delete specifically the carrots
+  within('tr[data-name="carrots"]') do
+    click_link "Destroy"
+  end
 end
 
 Then /^the list of products should contain the product$/ do
