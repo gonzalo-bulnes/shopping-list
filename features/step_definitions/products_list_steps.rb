@@ -6,6 +6,10 @@ Given /^there are carrots and spinach in the list of products$/ do
   @spinach = FactoryGirl.create(:product, name: "spinach")
 end
 
+Given /^there are spinach in the list of products$/ do
+  @spinach = FactoryGirl.create(:product, name: "spinach")
+end
+
 Given /^there are carrots, spinach and melon in the list of products$/ do
   @carrots = FactoryGirl.create(:product, name: "carrots")
   @spinach = FactoryGirl.create(:product, name: "spinach")
@@ -16,6 +20,13 @@ When /^I add a product to the list of products$/ do
   visit new_product_path
 
   fill_in :name, with: "apples"
+  click_button "Create Product"
+end
+
+When /^I add spinach to the list of products$/ do
+  visit new_product_path
+
+  fill_in :name, with: "spinach"
   click_button "Create Product"
 end
 
@@ -48,4 +59,8 @@ Then /^I should see carrots, spinach and melon$/ do
   page.should have_content "carrots"
   page.should have_content "spinach"
   page.should have_content "melon"
+end
+
+Then /^spinach should not be duplicated in the list of products$/ do
+  Product.find_by_name("spinach").count.should eq 1
 end

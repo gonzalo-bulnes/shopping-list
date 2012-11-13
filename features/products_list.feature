@@ -19,3 +19,10 @@ Feature: List of Products
     Given there are carrots, spinach and melon in the list of products
     When I go to the list of products page
     Then I should see carrots, spinach and melon
+
+  Scenario: Create a duplicated product
+    Given there are spinach in the list of products
+    When I add spinach to the list of products
+    Then I should see "This product has already been created."
+    And the list of products should contain spinach
+    And spinach should not be duplicated in the list of products
