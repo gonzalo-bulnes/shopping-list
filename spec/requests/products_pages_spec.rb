@@ -32,4 +32,24 @@ describe "Products Pages:" do
       end
     end
   end
+
+  describe "new product page" do
+    before { visit new_product_path }
+    
+    it "should have a title" do
+      page.should have_selector("h1", text: "New Product")
+    end
+
+    context "should have a form" do
+      it "with a name input field" do
+        page.should have_selector('input[id="product_name"]')
+      end
+      it "with a 'Create Product' button" do
+        page.should have_selector('input[type="submit"][value="Create Product"]')
+      end
+      it "should use bootstrap" do
+        page.should have_selector('input.btn[type="submit"]')
+      end
+    end
+  end
 end

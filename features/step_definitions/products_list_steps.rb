@@ -47,7 +47,7 @@ When /^I remove the carrots from the list of products$/ do
 end
 
 Then /^the list of products should contain the product$/ do
-  Product.find_by_name("salad").should_not be_nil
+  Product.find_by_name("salad").class == Product
 end
 
 Then /^I should see "(.*?)"$/ do |content|
@@ -55,11 +55,11 @@ Then /^I should see "(.*?)"$/ do |content|
 end
 
 Then /^the list of products should not contain carrots$/ do
-  Product.find_by_name("carrots").should be_nil
+  Product.find_by_name("carrots").class == Product
 end
 
 Then /^the list of products should contain spinach$/ do
-  Product.find_by_name("spinach").should_not be_nil
+  Product.find_by_name("spinach").class == Product
 end
 
 Then /^I should see carrots, spinach and melon$/ do

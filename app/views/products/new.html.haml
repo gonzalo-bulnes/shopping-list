@@ -1,0 +1,5 @@
+%h1 New Product
+
+= simple_form_for @product, html: { class: 'form-inline' } do |f|
+  = f.input :name
+  = f.button :submit, "Create Product"

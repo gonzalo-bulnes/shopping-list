@@ -2,7 +2,7 @@ ShoppingList::Application.routes.draw do
 
   get "products/index"
 
-  resources :products, only: [:index]
+  resources :products, only: [:create, :index, :new]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

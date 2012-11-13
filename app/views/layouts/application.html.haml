@@ -46,6 +46,13 @@
 
   / Add your site or application content here
   .container
+
+    / Flash messages
+    - flash.each do |name, msg|
+      .alert{ class: "alert-#{ name == :notice ? 'success' : 'error' }" }
+        %a.close( data-dismiss="alert" ) x
+        = msg
+
     = yield
 
   / JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom
