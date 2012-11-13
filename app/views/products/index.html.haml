@@ -1,2 +1,9 @@
 %h1 Products
-%p Find me in app/views/products/index.html.haml
+
+%table.table.table-striped.table-bordered
+  %thead
+    %th Name
+  %tbody
+    - Product.all.each do |product|
+      - @product = product
+      = render 'product'
