@@ -6,8 +6,8 @@ Given /^there are carrots and spinach in the list of products$/ do
   @spinach = FactoryGirl.create(:product, name: "spinach")
 end
 
-Given /^there are spinach in the list of products$/ do
-  @spinach = FactoryGirl.create(:product, name: "spinach")
+Given /^there are (\S+) in the list of products$/ do |name|
+  @spinach = FactoryGirl.create(:product, name: name)
 end
 
 Given /^there are carrots, spinach and melon in the list of products$/ do
@@ -27,6 +27,13 @@ When /^I add spinach to the list of products$/ do
   visit new_product_path
 
   fill_in :name, with: "spinach"
+  click_button "Create Product"
+end
+
+When /^I add a product with a blank name to the list of products$/ do
+  visit new_product_path
+
+  fill_in :name, with: ""
   click_button "Create Product"
 end
 
@@ -62,5 +69,9 @@ Then /^I should see carrots, spinach and melon$/ do
 end
 
 Then /^spinach should not be duplicated in the list of products$/ do
-  Product.find_by_name("spinach").count.should eq 1
+  Product.where( :name => "spinach" ).count.should eq 1
+end
+
+Then /^the list of products should contain no products$/ do
+  Product.count.should eq 0
 end

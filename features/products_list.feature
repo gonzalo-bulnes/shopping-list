@@ -9,6 +9,12 @@ Feature: List of Products
     Then the list of products should contain the product
     And I should see "The new product was successfully created."
 
+  Scenario: Create a product with a blank name
+    Given there are no products in the list of products
+    When I add a product with a blank name to the list of products
+    Then the list of products should contain no products
+    And I should see "Please give a name to your product."
+
   Scenario: Delete a product
     Given there are carrots and spinach in the list of products
     When I remove the carrots from the list of products
