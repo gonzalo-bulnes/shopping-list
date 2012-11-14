@@ -44,8 +44,16 @@
   /[if lt IE 7]
     %p.chromeframe Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.
 
-  / Add your site or application content here -->
-  = yield
+  / Add your site or application content here
+  .container
+
+    / Flash messages
+    - flash.each do |name, msg|
+      .alert{ class: "alert-#{ name == :notice ? 'success' : 'error' }" }
+        %a.close( data-dismiss="alert" ) x
+        = msg
+
+    = yield
 
   / JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom
   = javascript_include_tag 'application'
