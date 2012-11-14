@@ -1,19 +1,23 @@
 Given /^there are no products in the list of products$/ do
 end
 
-Given /^there are carrots and spinach in the list of products$/ do
-  @carrots = FactoryGirl.create(:product, name: "carrots")
-  @spinach = FactoryGirl.create(:product, name: "spinach")
-end
-
-Given /^there are (\S+) in the list of products$/ do |name|
+Given /^there (?:are|is) (\S+) in the list of products$/ do |name|
   @spinach = FactoryGirl.create(:product, name: name)
 end
 
+Given /^there are carrots and spinach in the list of products$/ do
+  steps %{
+    Given there are carrots in the list of products
+    And there are spinach in the list of products
+  }
+end
+
 Given /^there are carrots, spinach and melon in the list of products$/ do
-  @carrots = FactoryGirl.create(:product, name: "carrots")
-  @spinach = FactoryGirl.create(:product, name: "spinach")
-  @melon = FactoryGirl.create(:product, name: "melon")
+  steps %{
+    Given there are carrots in the list of products
+    And there are spinach in the list of products
+    And there is melon in the list of products
+  }
 end
 
 When /^I add a product to the list of products$/ do
@@ -23,10 +27,10 @@ When /^I add a product to the list of products$/ do
   click_button "Create Product"
 end
 
-When /^I add spinach to the list of products$/ do
+When /^I add (\S+) to the list of products$/ do |name|
   visit new_product_path
 
-  fill_in :name, with: "spinach"
+  fill_in :name, with: name
   click_button "Create Product"
 end
 
@@ -54,22 +58,24 @@ Then /^I should see "(.*?)"$/ do |content|
   page.should have_content content
 end
 
-Then /^the list of products should not contain carrots$/ do
-  Product.find_by_name("carrots").class == Product
+Then /^the list of products should contain (\S+)$/ do |name|
+  Product.find_by_name(name).class == Product
 end
 
-Then /^the list of products should contain spinach$/ do
-  Product.find_by_name("spinach").class == Product
+Then /^the list of products should not contain (\S+)$/ do |name|
+  Product.find_by_name(name).should be_nil
 end
 
 Then /^I should see carrots, spinach and melon$/ do
-  page.should have_content "carrots"
-  page.should have_content "spinach"
-  page.should have_content "melon"
+  steps %{
+    Then I should see "carrots"
+    And I should see "spinach"
+    And I should see "melon"
+  }
 end
 
-Then /^spinach should not be duplicated in the list of products$/ do
-  Product.where( :name => "spinach" ).count.should eq 1
+Then /^(\S+) should not be duplicated in the list of products$/ do |name|
+  Product.where( :name => name ).count.should eq 1
 end
 
 Then /^the list of products should contain no products$/ do

@@ -65,7 +65,7 @@ describe ProductsController do
       }.to change(Product,:count).by(-1)
     end
 
-    it "redirects to contacts#index" do
+    it "redirects to products#index" do
       delete :destroy, id: @product
       response.should redirect_to products_url
     end
