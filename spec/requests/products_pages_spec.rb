@@ -30,6 +30,20 @@ describe "Products Pages:" do
         page.should have_css('table.table tbody tr td', text: "apples")
         page.should have_css('table.table tbody tr td', text: "salad")
       end
+
+      it "should provide a 'Destroy' button for each of them" do
+        page.should have_css('tr[data-name="carrots"] a', text: "Destroy")
+        page.should have_css('tr[data-name="spinach"] a', text: "Destroy")
+        page.should have_css('tr[data-name="apples"] a', text: "Destroy")
+        page.should have_css('tr[data-name="salad"] a', text: "Destroy")
+      end
+
+      it "should use bootstrap for 'Destroy' buttons" do
+        page.should have_css('tr[data-name="carrots"] a.btn.btn-danger', text: "Destroy")
+        page.should have_css('tr[data-name="spinach"] a.btn.btn-danger', text: "Destroy")
+        page.should have_css('tr[data-name="apples"] a.btn.btn-danger', text: "Destroy")
+        page.should have_css('tr[data-name="salad"] a.btn.btn-danger', text: "Destroy")
+      end
     end
   end
 

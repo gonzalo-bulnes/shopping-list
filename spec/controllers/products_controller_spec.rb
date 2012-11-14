@@ -53,4 +53,21 @@ describe ProductsController do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    before :each do
+      @product = FactoryGirl.create(:product)
+    end
+
+    it "deletes the product" do
+      expect{
+        delete :destroy, id: @product        
+      }.to change(Product,:count).by(-1)
+    end
+
+    it "redirects to contacts#index" do
+      delete :destroy, id: @product
+      response.should redirect_to products_url
+    end
+  end
 end
