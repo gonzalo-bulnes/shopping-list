@@ -11,7 +11,11 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to products_url, notice: 'The new product was successfully created.' }
       else
-        flash[:error] = 'Please give a name to your product.'
+        if @product.name.blank?
+          flash[:error] = 'Please give a name to your product.'
+        else
+          flash[:error] = 'This product has already been created.'
+        end
         format.html { render action: "new" }
       end
     end

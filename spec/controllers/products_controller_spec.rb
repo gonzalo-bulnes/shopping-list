@@ -29,6 +29,15 @@ describe ProductsController do
         post :create, product: FactoryGirl.attributes_for(:product)
         response.should redirect_to products_path
       end
+
+      it "does not create two products with the same name" do
+        # Given there is a product in the database
+        post :create, product: FactoryGirl.attributes_for(:product)
+
+        expect{
+          post :create, product: FactoryGirl.attributes_for(:product)
+        }.not_to change(Product,:count)
+      end
     end
 
     context "with invalid attributes" do
