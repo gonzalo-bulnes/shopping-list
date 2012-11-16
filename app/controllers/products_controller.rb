@@ -1,5 +1,14 @@
 class ProductsController < ApplicationController
 
+  def add
+    @product = Product.find(params[:id])
+
+    @product.update_attribute(:in_shopping_list, true) unless @product.nil?
+
+    request.env['HTTP_REFERER'] ||= products_url
+    redirect_to :back
+  end
+
   def create
     @product = Product.new(params[:product])
 
@@ -31,5 +40,14 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def remove
+    @product = Product.find(params[:id])
+
+    @product.update_attribute(:in_shopping_list, false) unless @product.nil?
+
+    request.env['HTTP_REFERER'] ||= products_url
+    redirect_to :back
   end
 end

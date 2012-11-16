@@ -1,8 +1,13 @@
 SimpleShoppingList::Application.routes.draw do
 
-  get "products/index"
+  match 'shopping_list' => 'shopping_list#index'
 
-  resources :products, only: [:create, :destroy, :index, :new]
+  resources :products, only: [:create, :destroy, :index, :new] do
+    member do
+      post :add
+      post :remove
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
