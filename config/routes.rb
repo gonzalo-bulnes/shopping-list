@@ -1,6 +1,6 @@
 ShoppingList::Application.routes.draw do
 
-  get "products/index"
+  post "shopping_list/add"
 
   resources :products, only: [:create, :destroy, :index, :new]
 
