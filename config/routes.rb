@@ -2,7 +2,8 @@ SimpleShoppingList::Application.routes.draw do
 
   resources :products, only: [:create, :destroy, :index, :new] do
     member do
-      post :add 
+      post :add
+      post :remove
     end
   end
 

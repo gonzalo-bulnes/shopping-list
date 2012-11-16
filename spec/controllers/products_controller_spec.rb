@@ -89,4 +89,39 @@ describe ProductsController do
       }.to change(Product.in_shopping_list, :count).by(1)
     end
   end
+
+  describe "POST 'remove'" do
+    before(:each) do
+      # Given there is a product in the list of products
+      @product = FactoryGirl.create(:product)
+    end
+
+    it "redirects to the referrer" do
+      post :remove, id: @product.id
+
+      response.should redirect_to :back
+    end
+
+    context "when the prodcut is in the shopping list" do
+
+      before do
+        post :add, id: @product.id
+      end
+
+      it "removes it from the shopping list" do
+        expect{
+          post :remove, id: @product.id
+        }.to change(Product.in_shopping_list, :count).by(-1)
+      end
+    end
+
+    context "when the prodcut is not in the shopping list" do
+
+      it "does nothing" do
+        expect{
+          post :remove, id: @product.id
+        }.not_to change(Product.in_shopping_list, :count)
+      end
+    end
+  end
 end
