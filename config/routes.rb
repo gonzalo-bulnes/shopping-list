@@ -1,4 +1,4 @@
-ShoppingList::Application.routes.draw do
+SimpleShoppingList::Application.routes.draw do
 
   post "shopping_list/add"
 
