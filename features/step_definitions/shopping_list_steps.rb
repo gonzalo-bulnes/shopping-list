@@ -36,6 +36,10 @@ Given /^there is a product in the shopping list$/ do
   post add_product_path( @product )
 end
 
+Given /^the product in not in the shopping list$/ do
+  post remove_product_path( @product )
+end
+
 When /^I add carrots to the shopping list$/ do
   visit products_path
 
@@ -74,4 +78,28 @@ end
 
 Then /^carrots should not be duplicated in the shopping list$/ do
   pending # I don't know how to test this.
+end
+
+Then /^I should be able to remove the product from the shopping list$/ do
+  within 'tr[data-name="salad"]' do
+    page.should have_selector('a[title="Remove from the shopping list"][data-method="post"]')
+  end
+end
+
+Then /^I should not be able to add the product to the shopping list$/ do
+  within 'tr[data-name="salad"]' do
+    page.should_not have_selector('a[title="Add to the shopping list"][data-method="post"]')
+  end
+end
+
+Then /^I should be able to add the product to the shopping list$/ do
+  within 'tr[data-name="salad"]' do
+    page.should have_selector('a[title="Add to the shopping list"][data-method="post"]')
+  end
+end
+
+Then /^I should not be able to remove the product from the shopping list$/ do
+  within 'tr[data-name="salad"]' do
+    page.should_not have_selector('a[title="Remove from the shopping list"][data-method="post"]')
+  end
 end
