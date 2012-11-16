@@ -1,8 +1,10 @@
 SimpleShoppingList::Application.routes.draw do
 
-  post "shopping_list/add"
-
-  resources :products, only: [:create, :destroy, :index, :new]
+  resources :products, only: [:create, :destroy, :index, :new] do
+    member do
+      post :add 
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

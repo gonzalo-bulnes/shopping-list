@@ -1,5 +1,14 @@
 class ProductsController < ApplicationController
 
+  def add
+    @product = Product.find(params[:id])
+
+    @product.update_attribute(:in_shopping_list, true)
+
+    request.env['HTTP_REFERER'] ||= products_url
+    redirect_to :back
+  end
+
   def create
     @product = Product.new(params[:product])
 

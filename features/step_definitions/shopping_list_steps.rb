@@ -7,10 +7,9 @@ Given /^there are carrots, spinach and melon in the shopping list$/ do
   @spinach = Product.find_by_name("spinach")
   @melon = Product.find_by_name("melon")
 
-  ShoppingList.add( @carrots )
-  ShoppingList.add( @spinach )
-  ShoppingList.add( @melon )
-
+  add_product_path( @carrots )
+  add_product_path( @spinach )
+  add_product_path( @melon )
 end
 
 Given /^there are carrots in the shopping list$/ do
@@ -20,7 +19,7 @@ Given /^there are carrots in the shopping list$/ do
 
   @carrots = Product.find_by_name("carrots")
 
-  ShoppingList.add( @carrots )
+  add_product_path( @carrots )
 end
 
 Given /^there are no products in the shopping list$/ do
@@ -34,7 +33,7 @@ Given /^there is a product in the shopping list$/ do
 
   @product = Product.find_by_name("salad")
 
-  ShoppingList.add( @product )
+  add_product_path( @product )
 end
 
 When /^I add carrots to the shopping list$/ do
@@ -62,15 +61,15 @@ When /^I remove the product from the shopping list$/ do
 end
 
 Then /^the shopping list should contain the product$/ do
-  ShoppingList.contains?( @product ).should be_true
+  Product.in_shopping_list.should include( @product )
 end
 
 Then /^the shopping list should not contain the product$/ do
-  ShoppingList.contains?( @product ).should be_false
+  Product.in_shopping_list.should_not include( @product )
 end
 
 Then /^I should have carrots on the shopping list$/ do
-  ShoppingList.contains?( @product ).should be_true
+  Product.in_shopping_list.should include( @carrots )
 end
 
 Then /^carrots should not be duplicated in the shopping list$/ do

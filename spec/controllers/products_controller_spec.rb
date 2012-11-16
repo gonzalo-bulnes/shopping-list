@@ -70,4 +70,23 @@ describe ProductsController do
       response.should redirect_to products_url
     end
   end
+
+  describe "POST 'add'" do
+    before(:each) do
+      # Given there is a product in the list of products
+      @product = FactoryGirl.create(:product)
+    end
+
+    it "redirects to the referrer" do
+      post :add, id: @product.id
+
+      response.should redirect_to :back
+    end
+
+    it "adds the product to the shopping list" do
+      expect{
+        post :add, id: @product.id
+      }.to change(Product.in_shopping_list, :count).by(1)
+    end
+  end
 end
