@@ -83,10 +83,26 @@ describe ProductsController do
       response.should redirect_to :back
     end
 
-    it "adds the product to the shopping list" do
-      expect{
+    context "when the prodcut is in the shopping list" do
+
+      before do
         post :add, id: @product.id
-      }.to change(Product.in_shopping_list, :count).by(1)
+      end
+
+      it "does nothing" do
+        expect{
+          post :add, id: @product.id
+        }.not_to change(Product.in_shopping_list, :count)
+      end
+    end
+
+    context "when the prodcut is not in the shopping list" do
+
+      it "adds the product to the shopping list" do
+        expect{
+          post :add, id: @product.id
+        }.to change(Product.in_shopping_list, :count).by(1)
+      end
     end
   end
 
