@@ -3,3 +3,5 @@
 = simple_form_for @product, html: { class: 'form-inline' } do |f|
   = f.input :name
   = f.button :submit, "Create Product"
+
+= link_to "Cancel", products_path, title: "Go to the list of products", class: "btn"
