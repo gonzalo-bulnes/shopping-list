@@ -1,3 +1,7 @@
+Given /^I am anywhere$/ do
+  # no conditiond
+end
+
 Given /^I am on the shopping list page$/ do
   steps %{
     When I go to the shopping list page
@@ -12,6 +16,10 @@ end
 
 Given /^I am on the new product page$/ do
   visit new_product_path
+end
+
+When /^I go to the home page$/ do
+  visit root_path
 end
 
 When /^I go to the list of products page$/ do
@@ -32,4 +40,8 @@ end
 
 Then /^I should be able to go to the list of products page$/ do
   page.should have_selector('a[title="Go to the list of products"]')
+end
+
+Then /^I should see the shopping list page$/ do
+  page.should have_selector('h1', text: "Shopping List")
 end

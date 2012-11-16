@@ -1,5 +1,7 @@
 SimpleShoppingList::Application.routes.draw do
 
+  root to: 'shopping_list#index'
+
   match 'shopping_list' => 'shopping_list#index'
 
   resources :products, only: [:create, :destroy, :index, :new] do
