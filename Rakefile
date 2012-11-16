@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ShoppingList::Application.load_tasks
+SimpleShoppingList::Application.load_tasks
