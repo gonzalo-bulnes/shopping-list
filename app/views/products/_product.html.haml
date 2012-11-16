@@ -1,5 +1,5 @@
 %tr( data-name="#{ @product.name }" )
   %td= @product.name
   %td= link_to "Destroy", product_path(@product), class: "btn btn-danger", method: :delete
-  %td= link_to "Remove from the shopping list", remove_product_path(@product), class: "btn", method: :post
-  %td= link_to "Add to the shopping list", add_product_path(@product), class: "btn", method: :post
+  %td= link_to "Remove from the shopping list", remove_product_path(@product), class: "btn", method: :post, title: "Remove from the shopping list"
+  %td= link_to "Add to the shopping list", add_product_path(@product), class: "btn", method: :post, title: "Add to the shopping list"
