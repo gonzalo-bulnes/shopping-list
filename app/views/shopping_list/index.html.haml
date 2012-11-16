@@ -1,2 +1,10 @@
-%h1 ShoppingList#index
-%p Find me in app/views/shopping_list/index.html.haml
+%h1 Shopping List
+
+%table.table.table-striped.table-bordered
+  %thead
+    %th Name
+    %th
+  %tbody
+    - @items.all.each do |item|
+      - @item = item
+      = render 'item'
