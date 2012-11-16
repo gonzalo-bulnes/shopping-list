@@ -1,5 +1,7 @@
 %h1 Products
 
+= link_to "Shopping List", shopping_list_path, title: "Go to the shopping list", class: "btn btn-link"
+
 %table.table.table-striped.table-bordered
   %thead
     %th Name
@@ -9,3 +11,5 @@
     - Product.all.each do |product|
       - @product = product
       = render 'product'
+
+= link_to "New Product!", new_product_path, title: "Create a new product", class: "btn btn-success btn-large"
