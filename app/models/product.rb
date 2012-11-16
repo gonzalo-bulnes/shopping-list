@@ -4,4 +4,8 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { message: "is already in you products list"}
 
   scope :in_shopping_list, where( in_shopping_list: true )
+
+  def in_shopping_list?
+    in_shopping_list
+  end
 end

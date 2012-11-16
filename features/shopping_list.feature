@@ -20,7 +20,8 @@ Feature: Shopping List
     Then the shopping list should not contain the product
 
   Scenario: Add a product which is already on the shopping list
-    Given there are carrots in the shopping list
-    When I add carrots to the shopping list
-    Then I should have carrots on the shopping list
-    And carrots should not be duplicated in the shopping list
+    # Deprecated by the quick feedback feature
+    #Given there are carrots in the shopping list
+    #When I add carrots to the shopping list
+    #Then I should have carrots on the shopping list
+    #And carrots should not be duplicated in the shopping list
