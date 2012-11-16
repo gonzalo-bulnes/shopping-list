@@ -47,7 +47,7 @@ end
 When /^I add the product to the shopping list$/ do
   visit products_path
 
-  within 'tr[data-name="#{ @product.name }"]' do
+  within 'tr[data-name="salad"]' do
     click_link "Add to the shopping list"
   end
 end
@@ -56,7 +56,7 @@ When /^I remove the product from the shopping list$/ do
   visit products_path
 
   within 'tr[data-name="salad"]' do
-    click_link "Remove from the shoping list"
+    click_link "Remove from the shopping list"
   end
 end
 
