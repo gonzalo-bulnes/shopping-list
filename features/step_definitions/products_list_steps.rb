@@ -2,7 +2,15 @@ Given /^there are no products in the list of products$/ do
 end
 
 Given /^there (?:are|is) (\S+) in the list of products$/ do |name|
-  @spinach = FactoryGirl.create(:product, name: name)
+  FactoryGirl.create(:product, name: name)
+end
+
+Given /^there is a product in the list of products$/ do
+  steps %{
+    Given there is salad in the list of products
+  }
+
+  @product = Product.find_by_name("salad")
 end
 
 Given /^there are carrots and spinach in the list of products$/ do

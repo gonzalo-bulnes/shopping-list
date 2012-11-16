@@ -1,0 +1,9 @@
+%h1 Shopping List
+
+%table.table.table-striped.table-bordered
+  %thead
+    %th Name
+  %tbody
+    - @items.all.each do |item|
+      - @item = item
+      = render 'item'

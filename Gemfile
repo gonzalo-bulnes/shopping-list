@@ -13,6 +13,9 @@ group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+
+  # to render screenshots from capybara-webkit (requires ImageMagick)
+  gem 'mini_magick'
 end
 
 group :test, :development do
