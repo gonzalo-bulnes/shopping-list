@@ -7,9 +7,9 @@ Given /^there are carrots, spinach and melon in the shopping list$/ do
   @spinach = Product.find_by_name("spinach")
   @melon = Product.find_by_name("melon")
 
-  add_product_path( @carrots )
-  add_product_path( @spinach )
-  add_product_path( @melon )
+  post add_product_path( @carrots )
+  post add_product_path( @spinach )
+  post add_product_path( @melon )
 end
 
 Given /^there are carrots in the shopping list$/ do
@@ -19,7 +19,7 @@ Given /^there are carrots in the shopping list$/ do
 
   @carrots = Product.find_by_name("carrots")
 
-  add_product_path( @carrots )
+  post add_product_path( @carrots )
 end
 
 Given /^there are no products in the shopping list$/ do
@@ -33,7 +33,7 @@ Given /^there is a product in the shopping list$/ do
 
   @product = Product.find_by_name("salad")
 
-  add_product_path( @product )
+  post add_product_path( @product )
 end
 
 When /^I add carrots to the shopping list$/ do
