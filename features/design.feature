@@ -3,13 +3,13 @@ Feature: App Design
   I want the app to have great buttons and color
   In order to make it easier to undertand, more intuitive and comfortable to use
 
-  @icon-star @current
+  @icon-star
   Scenario: Icon button for remove product to the shopping list toggle action
     Given there is a product in the shopping list
     When I go to the list of products page
     Then the "Remove from the shopping list" button should have a star icon
 
-  @icon-star @current
+  @icon-star
   Scenario: Icon button for add product to the shopping list toggle action
     Given there are no products in the shopping list
     And there is a product in the list of products
