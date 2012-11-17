@@ -20,3 +20,16 @@
 .container {
   padding-top: 2em;
 }
+
+/* The following styles should be used with Font Awesome and Bootstrap */
+
+.custom-btn-icon {
+  /* should be used with .btn for icon-olny buttons */
+  font-size: 24px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+
+  &:focus, &:hover {
+    text-decoration: none;
+  }
+}
