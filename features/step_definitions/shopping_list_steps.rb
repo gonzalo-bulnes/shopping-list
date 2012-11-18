@@ -28,6 +28,16 @@ Given /^there are carrots in the shopping list$/ do
   post add_product_path( @carrots )
 end
 
+Given /^there are spinach in the shopping list$/ do
+  steps %{
+    Given there are spinach in the list of products
+  }
+
+  @spinach = Product.find_by_name("spinach")
+
+  post add_product_path( @spinach )
+end
+
 Given /^there are no products in the shopping list$/ do
   steps %{
     Given there is a shopping list
