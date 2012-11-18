@@ -6,7 +6,12 @@ class ShoppingListController < ApplicationController
     # Valid while there is only one shopping list
     @shopping_list = ShoppingList.all.first
 
-    @shopping_list.products << @product unless @product.nil? || @shopping_list.products.include?(@product)
+    if !@product.nil? and !@shopping_list.products.include?(@product)
+      # create the association
+      @shopping_list.products << @product
+      # set the default status
+      @product.status!(@product, @shopping_list, "pending") 
+    end
 
     request.env['HTTP_REFERER'] ||= products_url
     redirect_to :back

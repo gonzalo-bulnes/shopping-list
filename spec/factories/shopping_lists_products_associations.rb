@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :shopping_lists_products_association do
+    product
+    shopping_list
+    status nil
   end
 end

@@ -1,5 +1,8 @@
 Given /^the (\S+) status is "(.*?)"$/ do |product_name, status|
-  @shopping_list.products.where(name: product_name).pop.status!( status )
+  # get a reference to the product
+  @product = @shopping_list.products.where(name: product_name).first
+  # set the status
+  @product.status!(@product, @shopping_list, status)
 end
 
 When /^I toggle the carrots status$/ do
@@ -25,5 +28,8 @@ When /^I toggle the spinach status$/ do
 end
 
 Then /^the (\S+) status should be "(.*?)"$/ do |product_name, status|
-  @shopping_list.products.where(name: product_name).pop.status.should eq status
+  # get a reference to the product
+  @product = @shopping_list.products.where(name: product_name).first
+  # test the status
+  @product.status(@product, @shopping_list).should eq status
 end
