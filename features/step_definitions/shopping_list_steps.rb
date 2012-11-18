@@ -1,5 +1,5 @@
 Given /^there is a shopping list*/ do
-  @shopping_list = FactoryGirl.create(:shopping_list)
+  @shopping_list ||= FactoryGirl.create(:shopping_list)
 end
 
 Given /^there are carrots, spinach and melon in the shopping list$/ do
@@ -30,6 +30,7 @@ end
 
 Given /^there are spinach in the shopping list$/ do
   steps %{
+    Given there is a shopping list
     Given there are spinach in the list of products
   }
 
@@ -63,7 +64,9 @@ Given /^the product in not in the shopping list$/ do
 end
 
 When /^I add carrots to the shopping list$/ do
-  visit products_path
+  steps %{
+    When I go to the list of products page
+  }
 
   within 'tr[data-name="carrots"]' do
     click_link "Add to the shopping list"

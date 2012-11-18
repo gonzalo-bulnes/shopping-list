@@ -1,9 +1,12 @@
 Given /^the (\S+) status is "(.*?)"$/ do |product_name, status|
-  ShoppingList.find_by_name( product_name ).status!( status )
+  # this implementation is not very elegant...
+  @shopping_list.products.where( name: product_name ).pop.status!( status )
 end
 
 When /^I toggle the carrots status$/ do
-  visit shopping_list_path
+  steps %{
+    When I go to the shopping list page
+  }
 
   # The name, title of the link which toggles the shopping list item status
   # should vary according to the current status. That makes the use of
@@ -12,7 +15,9 @@ When /^I toggle the carrots status$/ do
 end
 
 When /^I toggle the spinach status$/ do
-  visit shopping_list_path
+  steps %{
+    When I go to the shopping list page
+  }
 
   # The name, title of the link which toggles the shopping list item status
   # should vary according to the current status. That makes the use of
@@ -21,5 +26,6 @@ When /^I toggle the spinach status$/ do
 end
 
 Then /^the (\S+) status should be "(.*?)"$/ do |product_name, status|
-  ShoppingList.find_by_name( product_name ).status.should eq status
+  # this implementation is not very elegant...
+  @shopping_list.products.where( name: product_name ).pop.status.should eq status
 end
