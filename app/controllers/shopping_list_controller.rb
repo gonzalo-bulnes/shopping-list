@@ -44,4 +44,20 @@ class ShoppingListController < ApplicationController
     request.env['HTTP_REFERER'] ||= products_url
     redirect_to :back
   end
+
+  def toggle_status_product
+    # Valid while there is only one shopping list
+    @shopping_list = ShoppingList.all.first
+
+    @product = @shopping_list.products.where(id: params[:id]).first
+
+    if @product.status(@product, @shopping_list) == "pending"
+      @product.status!(@product, @shopping_list, "done")
+    else # status is "done"
+      @product.status!(@product, @shopping_list, "pending")
+    end
+
+    request.env['HTTP_REFERER'] ||= products_url
+    redirect_to :back
+  end
 end

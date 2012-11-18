@@ -21,6 +21,23 @@
   padding-top: 2em;
 }
 
+/* General styles */
+
+.table {
+  font-size: 20px;
+  vertical-align: middle;
+  td {
+    padding-bottom: 8px;
+    padding-top: 12px;
+  }
+}
+
+/* Shopping list items styles */
+
+tr[data-status="done"] {
+    text-decoration: line-through;
+}
+
 /* The following styles should be used with Font Awesome and Bootstrap */
 
 .custom-btn-icon {
@@ -31,5 +48,10 @@
 
   &:focus, &:hover {
     text-decoration: none;
+  }
+
+  &.btn-link {
+    /* disable the link colors for icon */
+    color: inherit;
   }
 }

@@ -9,6 +9,7 @@ SimpleShoppingList::Application.routes.draw do
     member do
       post :add, to: 'shopping_list#add_product'
       post :remove, to: 'shopping_list#remove_product'
+      post :toggle_status, to: 'shopping_list#toggle_status_product'
     end
   end
 

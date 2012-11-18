@@ -122,4 +122,44 @@ describe ShoppingListController do
       end
     end
   end
+
+  describe "POST 'toggle_status_product'" do
+
+    before(:each) do
+      # Given there is a shopping list
+      @shopping_list = FactoryGirl.create(:shopping_list)
+      # Given there is a product in the list of products
+      @product = FactoryGirl.create(:product)
+      # Given the product is in the shopping list
+      post :add_product, id: @product.id
+    end
+
+    it "redirects to the referrer" do
+      post :toggle_status_product, id: @product.id
+
+      response.should redirect_to :back
+    end
+
+    context "when the product has the 'pending' status" do
+
+      it "toggles the product status to 'done'" do
+        post :toggle_status_product, id: @product.id
+
+        @product.status(@product, @shopping_list).should eq "done"
+      end
+    end
+
+    context "when the product has the 'done' status" do
+
+      before(:each) do
+        @product.status!(@product, @shopping_list, "done")
+      end
+
+      it "toggles the product status to 'pending'" do
+        post :toggle_status_product, id: @product.id
+
+        @product.status(@product, @shopping_list).should eq "pending"
+      end
+    end
+  end
 end

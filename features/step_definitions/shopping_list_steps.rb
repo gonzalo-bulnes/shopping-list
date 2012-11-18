@@ -1,5 +1,5 @@
 Given /^there is a shopping list*/ do
-  @shopping_list = FactoryGirl.create(:shopping_list)
+  @shopping_list ||= FactoryGirl.create(:shopping_list)
 end
 
 Given /^there are carrots, spinach and melon in the shopping list$/ do
