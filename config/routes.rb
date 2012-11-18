@@ -2,12 +2,14 @@ SimpleShoppingList::Application.routes.draw do
 
   root to: 'shopping_list#index'
 
-  match 'shopping_list' => 'shopping_list#index'
+  get 'shopping_list' => 'shopping_list#index'
+  post 'shopping_list' => 'shopping_list#create'
 
   resources :products, only: [:create, :destroy, :index, :new] do
     member do
-      post :add
-      post :remove
+      post :add, to: 'shopping_list#add_product'
+      post :remove, to: 'shopping_list#remove_product'
+      post :toggle_status, to: 'shopping_list#toggle_status_product'
     end
   end
 

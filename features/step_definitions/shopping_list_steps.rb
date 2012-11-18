@@ -1,5 +1,10 @@
+Given /^there is a shopping list*/ do
+  @shopping_list ||= FactoryGirl.create(:shopping_list)
+end
+
 Given /^there are carrots, spinach and melon in the shopping list$/ do
   steps %{
+    Given there is a shopping list
     Given there are carrots, spinach and melon in the list of products
   }
 
@@ -14,6 +19,7 @@ end
 
 Given /^there are carrots in the shopping list$/ do
   steps %{
+    Given there is a shopping list
     Given there are carrots in the list of products
   }
 
@@ -22,12 +28,26 @@ Given /^there are carrots in the shopping list$/ do
   post add_product_path( @carrots )
 end
 
+Given /^there are spinach in the shopping list$/ do
+  steps %{
+    Given there is a shopping list
+    Given there are spinach in the list of products
+  }
+
+  @spinach = Product.find_by_name("spinach")
+
+  post add_product_path( @spinach )
+end
+
 Given /^there are no products in the shopping list$/ do
-  # nop
+  steps %{
+    Given there is a shopping list
+  }
 end
 
 Given /^there is a product in the shopping list$/ do
   steps %{
+    Given there is a shopping list
     Given there is a product in the list of products
   }
 
@@ -37,6 +57,9 @@ Given /^there is a product in the shopping list$/ do
 end
 
 Given /^the product in not in the shopping list$/ do
+  steps %{
+    Given there is a shopping list
+  }
   post remove_product_path( @product )
 end
 
@@ -65,15 +88,15 @@ When /^I remove the product from the shopping list$/ do
 end
 
 Then /^the shopping list should contain the product$/ do
-  Product.in_shopping_list.should include( @product )
+  @shopping_list.products.should include( @product )
 end
 
 Then /^the shopping list should not contain the product$/ do
-  Product.in_shopping_list.should_not include( @product )
+  @shopping_list.products.should_not include( @product )
 end
 
 Then /^I should have carrots on the shopping list$/ do
-  Product.in_shopping_list.should include( @carrots )
+  @shopping_list.products.should include( @carrots )
 end
 
 Then /^carrots should not be duplicated in the shopping list$/ do

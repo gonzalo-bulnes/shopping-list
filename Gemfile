@@ -16,6 +16,8 @@ group :test do
 
   # to render screenshots from capybara-webkit (requires ImageMagick)
   gem 'mini_magick'
+  # test associations with rspec
+  gem 'shoulda'
 end
 
 group :test, :development do
