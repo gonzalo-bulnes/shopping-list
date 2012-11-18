@@ -3,6 +3,15 @@ require 'spec_helper'
 describe ShoppingListController do
 
   describe "GET 'index'" do
+    before(:each) do
+      # Given there is a shopping list
+      @shopping_list = FactoryGirl.create(:shopping_list)
+    end
+
+    it "should be valid when there is more than one shopping list" do
+      pending "which is not yet the case"
+    end
+
     it "returns http success" do
       get 'index'
       response.should be_success
@@ -11,8 +20,14 @@ describe ShoppingListController do
 
   describe "POST 'add_product'" do
     before(:each) do
+      # Given there is a shopping list
+      @shopping_list = FactoryGirl.create(:shopping_list)
       # Given there is a product in the list of products
       @product = FactoryGirl.create(:product)
+    end
+
+    it "should be valid when there is more than one shopping list" do
+      pending "which is not yet the case"
     end
 
     it "redirects to the referrer" do
@@ -21,7 +36,7 @@ describe ShoppingListController do
       response.should redirect_to :back
     end
 
-    context "when the prodcut is in the shopping list" do
+    context "when the product is in the shopping list" do
 
       before do
         post :add_product, id: @product.id
@@ -30,16 +45,16 @@ describe ShoppingListController do
       it "does nothing" do
         expect{
           post :add_product, id: @product.id
-        }.not_to change(Product.in_shopping_list, :count)
+        }.not_to change(@shopping_list.products, :count)
       end
     end
 
-    context "when the prodcut is not in the shopping list" do
+    context "when the product is not in the shopping list" do
 
       it "adds the product to the shopping list" do
         expect{
           post :add_product, id: @product.id
-        }.to change(Product.in_shopping_list, :count).by(1)
+        }.to change(@shopping_list.products, :count).by(1)
       end
     end
   end
@@ -69,8 +84,14 @@ describe ShoppingListController do
 
   describe "POST 'remove_product'" do
     before(:each) do
+      # Given there is a shopping list
+      @shopping_list = FactoryGirl.create(:shopping_list)
       # Given there is a product in the list of products
       @product = FactoryGirl.create(:product)
+    end
+
+    it "should be valid when there is more than one shopping list" do
+      pending "which is not yet the case"
     end
 
     it "redirects to the referrer" do
@@ -79,7 +100,7 @@ describe ShoppingListController do
       response.should redirect_to :back
     end
 
-    context "when the prodcut is in the shopping list" do
+    context "when the product is in the shopping list" do
 
       before do
         post :add_product, id: @product.id
@@ -88,16 +109,16 @@ describe ShoppingListController do
       it "removes it from the shopping list" do
         expect{
           post :remove_product, id: @product.id
-        }.to change(Product.in_shopping_list, :count).by(-1)
+        }.to change(@shopping_list.products, :count).by(-1)
       end
     end
 
-    context "when the prodcut is not in the shopping list" do
+    context "when the product is not in the shopping list" do
 
       it "does nothing" do
         expect{
           post :remove_product, id: @product.id
-        }.not_to change(Product.in_shopping_list, :count)
+        }.not_to change(@shopping_list.products, :count)
       end
     end
   end

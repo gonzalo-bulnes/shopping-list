@@ -29,28 +29,36 @@ Given /^there are carrots, spinach and melon in the list of products$/ do
 end
 
 When /^I add a product to the list of products$/ do
-  visit new_product_path
+  steps %{
+    When I go to the new product page
+  }
 
   fill_in :name, with: "apples"
   click_button "Create Product"
 end
 
 When /^I add (\S+) to the list of products$/ do |name|
-  visit new_product_path
+  steps %{
+    When I go to the new product page
+  }
 
   fill_in :name, with: name
   click_button "Create Product"
 end
 
 When /^I add a product with a blank name to the list of products$/ do
-  visit new_product_path
+  steps %{
+    When I go to the new product page
+  }
 
   fill_in :name, with: ""
   click_button "Create Product"
 end
 
 When /^I remove the carrots from the list of products$/ do
-  visit products_path
+  steps %{
+    When I go to the list of products page
+  }
 
   # delete specifically the carrots
   within('tr[data-name="carrots"]') do
