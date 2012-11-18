@@ -11,13 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118033406) do
+ActiveRecord::Schema.define(:version => 20121118052804) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "in_shopping_list", :default => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "shopping_list_id"
   end
 

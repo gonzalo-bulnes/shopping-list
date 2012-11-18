@@ -3,13 +3,15 @@ class ShoppingListController < ApplicationController
   def add_product
     @product = Product.find(params[:id])
 
-    @product.update_attribute(:in_shopping_list, true) unless @product.nil?
+    # Valid while there is only one shopping list
+    @product.update_attribute(:shopping_list_id, ShoppingList.all.first.id) unless @product.nil?
 
     request.env['HTTP_REFERER'] ||= products_url
     redirect_to :back
   end
 
   def create
+    # Only one shopping list should be created.
     ShoppingList.create unless ShoppingList.count != 0
 
     respond_to do |format|
@@ -18,13 +20,13 @@ class ShoppingListController < ApplicationController
   end
 
   def index
-    @items = Product.in_shopping_list
+    @items = ShoppingList.all.first.products
   end
 
   def remove_product
     @product = Product.find(params[:id])
 
-    @product.update_attribute(:in_shopping_list, false) unless @product.nil?
+    @product.update_attribute(:shopping_list_id, nil) unless @product.nil?
 
     request.env['HTTP_REFERER'] ||= products_url
     redirect_to :back

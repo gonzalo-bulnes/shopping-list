@@ -3,6 +3,8 @@ require 'spec_helper'
 describe "Products Pages:" do
   describe "product list page" do
 
+    let!(:shopping_list) { FactoryGirl.create(:shopping_list) }
+
     it "should have a title" do
       visit products_path
 

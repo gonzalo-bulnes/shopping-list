@@ -15,9 +15,16 @@ describe Product do
 
   describe "is_in_shopping_list? method" do
 
+    it "should be valid when there is more than one shopping list" do
+      pending "which is not yet the case"
+    end
+
     context "when the product is in the shopping list" do
       before do
-        @product = FactoryGirl.create(:product_in_shopping_list)
+        @shopping_list = FactoryGirl.create(:shopping_list)
+        @product = FactoryGirl.create(:product)
+        # add the product to the shopping list
+        @product.update_attribute(:shopping_list_id, @shopping_list.id)
       end
 
       it "should return 'true'" do
@@ -27,10 +34,11 @@ describe Product do
 
     context "when the product is not in the shopping list" do
       before do
+        @shopping_list = FactoryGirl.create(:shopping_list)
         @product = FactoryGirl.create(:product)
       end
 
-      it "should return 'false" do
+      it "should return 'false'" do
         @product.in_shopping_list?.should be_false
       end
     end
