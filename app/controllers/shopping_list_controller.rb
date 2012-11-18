@@ -9,6 +9,14 @@ class ShoppingListController < ApplicationController
     redirect_to :back
   end
 
+  def create
+    ShoppingList.create unless ShoppingList.count != 0
+
+    respond_to do |format|
+      format.html { redirect_to shopping_list_path }
+    end
+  end
+
   def index
     @items = Product.in_shopping_list
   end

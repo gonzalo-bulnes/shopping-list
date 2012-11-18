@@ -44,6 +44,29 @@ describe ShoppingListController do
     end
   end
 
+  describe "POST 'create'" do
+
+    it "creates a new shopping_list" do
+      expect{
+        post :create, shopping_list: FactoryGirl.attributes_for(:shopping_list)
+      }.to change(ShoppingList,:count).by(1)
+    end
+
+    it "redirects to the new shopping_list" do
+      post :create, shopping_list: FactoryGirl.attributes_for(:shopping_list)
+      response.should redirect_to shopping_list_path
+    end
+
+    it "does not create a shopping list if one already exists" do
+      # Given there is a shopping list in the database
+      post :create, shopping_list: FactoryGirl.attributes_for(:shopping_list)
+
+      expect{
+        post :create, shopping_list: FactoryGirl.attributes_for(:shopping_list)
+      }.not_to change(ShoppingList,:count)
+    end
+  end
+
   describe "POST 'remove_product'" do
     before(:each) do
       # Given there is a product in the list of products
