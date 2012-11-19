@@ -34,17 +34,17 @@ describe "Products Pages:" do
       end
 
       it "should provide a 'Destroy' button for each of them" do
-        page.should have_css('tr[data-name="carrots"] a', text: "Destroy")
-        page.should have_css('tr[data-name="spinach"] a', text: "Destroy")
-        page.should have_css('tr[data-name="apples"] a', text: "Destroy")
-        page.should have_css('tr[data-name="salad"] a', text: "Destroy")
+        page.should have_css('tr[data-name="carrots"] a[title="Destroy"]')
+        page.should have_css('tr[data-name="spinach"] a[title="Destroy"]')
+        page.should have_css('tr[data-name="apples"] a[title="Destroy"]')
+        page.should have_css('tr[data-name="salad"] a[title="Destroy"]')
       end
 
       it "should use bootstrap for 'Destroy' buttons" do
-        page.should have_css('tr[data-name="carrots"] a.btn.btn-danger', text: "Destroy")
-        page.should have_css('tr[data-name="spinach"] a.btn.btn-danger', text: "Destroy")
-        page.should have_css('tr[data-name="apples"] a.btn.btn-danger', text: "Destroy")
-        page.should have_css('tr[data-name="salad"] a.btn.btn-danger', text: "Destroy")
+        page.should have_css('tr[data-name="carrots"] a.btn.btn-link[title="Destroy"]')
+        page.should have_css('tr[data-name="spinach"] a.btn.btn-link[title="Destroy"]')
+        page.should have_css('tr[data-name="apples"] a.btn.btn-link[title="Destroy"]')
+        page.should have_css('tr[data-name="salad"] a.btn.btn-link[title="Destroy"]')
       end
     end
   end
