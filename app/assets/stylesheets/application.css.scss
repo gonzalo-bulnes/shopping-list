@@ -25,10 +25,11 @@
 
 .table {
   font-size: 20px;
-  vertical-align: middle;
   td {
-    padding-bottom: 8px;
-    padding-top: 12px;
+    vertical-align: middle;
+    &:first-child, &:last-child {
+      width: 0;
+    }
   }
 }
 
