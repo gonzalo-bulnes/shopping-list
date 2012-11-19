@@ -28,7 +28,12 @@
   td {
     vertical-align: middle;
     &:first-child, &:last-child {
+      /* when there are buttons on both sides of a data column */
       width: 0;
+    }
+    &.widthfix {
+      /* when there are only two columns and the first is a data column */
+      width: auto;
     }
   }
 }

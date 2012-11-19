@@ -1,5 +1,5 @@
 %tr( data-name="#{ @item.name }" data-status="#{ @item.status(@item, @shopping_list) }" )
-  %td= @item.name
+  %td.widthfix= @item.name
 
   - if @item.status(@item, @shopping_list) == "pending"
     %td
