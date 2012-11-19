@@ -1,10 +1,11 @@
 %tr( data-name="#{ @product.name }" )
+  %td
+    <a rel="nofollow" href="#{ product_path(@product) }" data-method="delete" title="Destroy" class="btn btn-link custom-btn-icon custom-btn-icon-danger custom-btn-icon-mini"><i class="icon-remove"></i></a>
   %td= @product.name
-  %td= link_to "Destroy", product_path(@product), class: "btn btn-danger", method: :delete
 
   - if @product.in_shopping_list?
     %td
-      <a href="#{ remove_product_path(@product) }" data-method="post" title="Remove from the shopping list" class="btn btn-warning custom-btn-icon"><i class="icon-star"></i></a>
+      <a href="#{ remove_product_path(@product) }" data-method="post" title="Remove from the shopping list" class="btn btn-link custom-btn-icon custom-btn-icon-warning custom-btn-icon-large"><i class="icon-star"></i></a>
   - else
     %td
-      <a href="#{ add_product_path(@product) }" data-method="post" title="Add to the shopping list" class="btn btn-warning custom-btn-icon"><i class="icon-star-empty"></i></a>
+      <a href="#{ add_product_path(@product) }" data-method="post" title="Add to the shopping list" class="btn btn-link custom-btn-icon custom-btn-icon-warning custom-btn-icon-large"><i class="icon-star-empty"></i></a>

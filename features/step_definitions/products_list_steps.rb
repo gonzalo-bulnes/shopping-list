@@ -97,3 +97,9 @@ end
 Then /^the list of products should contain no products$/ do
   Product.count.should eq 0
 end
+
+Then /^I should see the destroy product button$/ do
+  within('tr[data-name="salad"]') do
+    page.should have_selector('a.btn[data-method="delete"][title="Destroy"]')
+  end
+end

@@ -1,11 +1,9 @@
-
-
 %tr( data-name="#{ @item.name }" data-status="#{ @item.status(@item, @shopping_list) }" )
-  %td= @item.name
+  %td.widthfix= @item.name
 
   - if @item.status(@item, @shopping_list) == "pending"
     %td
-      <a href="#{ toggle_status_product_path(@item) }" data-method="post" data-action="toggle-shopping-list-item-status" title="Mark as done" class="btn btn-link custom-btn-icon"><i class="icon-minus"></i></a>
+      <a href="#{ toggle_status_product_path(@item) }" data-method="post" data-action="toggle-shopping-list-item-status" title="Mark as done" class="btn btn-link custom-btn-icon custom-btn-icon-inverse"><i class="icon-minus"></i></a>
   - else
     %td
-      <a href="#{ toggle_status_product_path(@item) }" data-method="post" data-action="toggle-shopping-list-item-status" title="Mark as pending" class="btn btn-link custom-btn-icon"><i class="icon-ok"></i></a>
+      <a href="#{ toggle_status_product_path(@item) }" data-method="post" data-action="toggle-shopping-list-item-status" title="Mark as pending" class="btn btn-link custom-btn-icon custom-btn-icon-inverse"><i class="icon-ok"></i></a>
