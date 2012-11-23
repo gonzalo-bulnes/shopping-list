@@ -28,19 +28,13 @@ Given /^there are carrots, spinach and melon in the list of products$/ do
   }
 end
 
-When /^I add a product to the list of products$/ do
+When /^I add ((?:\S+ \S+)|(?:\S+)) to the list of products$/ do |name|
   steps %{
     When I go to the new product page
   }
 
-  fill_in :name, with: "apples"
-  click_button "Create Product"
-end
-
-When /^I add (\S+) to the list of products$/ do |name|
-  steps %{
-    When I go to the new product page
-  }
+  # the default product is salad
+  name = "salad" if name == "a product"
 
   fill_in :name, with: name
   click_button "Create Product"
@@ -102,4 +96,30 @@ Then /^I should see the destroy product button$/ do
   within('tr[data-name="salad"]') do
     page.should have_selector('a.btn[data-method="delete"][title="Destroy"]')
   end
+end
+
+Then /^"(.*?)" should be the item (\d+) of the list of products$/ do |name, position|
+  page.should have_selector("tr:nth-child(#{position.to_i})", text: name)
+end
+
+Then /^"(.*?)" should be the (\S+) item of the list of products$/ do |name, position_name|
+
+  case position_name
+  when "first"
+    position = 1
+  when "second"
+    position = 2
+  when "third"
+    position = 3
+  when "fourth"
+    position = 4
+  else
+    position = nil
+    puts "Undefinded: '#{position_name}' is not a known position"
+  end
+
+  steps %{
+    Then I should see "#{name}"
+    And "#{name}" should be the item #{position} of the list of products
+  }
 end
