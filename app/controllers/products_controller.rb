@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.sort_by { |product| product.name }
+    @products = Product.all.sort_by { |product| product.name.downcase }
   end
 
   def new
