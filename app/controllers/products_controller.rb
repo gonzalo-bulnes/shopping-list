@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @products = Product.all.sort_by { |product| product.name }
   end
 
   def new

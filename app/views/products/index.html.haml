@@ -8,7 +8,7 @@
     %th Name
     %th
   %tbody
-    - Product.all.each do |product|
+    - @products.each do |product|
       - @product = product
       = render 'product'
 
