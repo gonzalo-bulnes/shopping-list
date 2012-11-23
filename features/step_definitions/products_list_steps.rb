@@ -28,6 +28,14 @@ Given /^there are carrots, spinach and melon in the list of products$/ do
   }
 end
 
+Given /^there are carrots, spinach and Melon in the list of products$/ do
+  steps %{
+    Given there are carrots in the list of products
+    And there are spinach in the list of products
+    And there is Melon in the list of products
+  }
+end
+
 When /^I add ((?:\S+ \S+)|(?:\S+)) to the list of products$/ do |name|
   steps %{
     When I go to the new product page
