@@ -28,4 +28,14 @@ describe Announcement, focus: true do
   it "should require an end time" do
     FactoryGirl.build(:announcement, ends_at: nil).should_not be_valid
   end
+
+  describe "'current' scope" do
+    it "should contain only active announcements" do
+      passed = FactoryGirl.create(:announcement, ends_at: 10.minutes.ago)
+      current = FactoryGirl.create(:announcement)
+      upcoming = FactoryGirl.create(:announcement, starts_at: 10.minutes.from_now)
+
+      Announcement.current.should eq [current]
+    end
+  end
 end

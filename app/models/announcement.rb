@@ -4,4 +4,6 @@ class Announcement < ActiveRecord::Base
   validates :message, presence: true
   validates :starts_at, presence: true
   validates :ends_at, presence: true
+
+  scope :current, -> { where("starts_at <= :now and ends_at >= :now", now: Time.zone.now )  }
 end

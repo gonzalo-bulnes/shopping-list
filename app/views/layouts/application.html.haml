@@ -47,6 +47,11 @@
   / Add your site or application content here
   .container
 
+    / Announcements
+    - Announcement.current.each do |announcement|
+      .alert.alert-info
+        = announcement.message
+
     / Flash messages
     - flash.each do |name, msg|
       .alert{ class: "alert-#{ name == :notice ? 'success' : 'error' }" }
