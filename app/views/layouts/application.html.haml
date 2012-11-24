@@ -48,7 +48,7 @@
   .container
 
     / Announcements
-    - Announcement.current(cookies.signed[:hidden_announcement_ids]).each do |announcement|
+    - Announcement.current(hidden_announcements).each do |announcement|
       .alert.alert-info
         %div( data-id="#{ announcement.id }" )
           = announcement.message
