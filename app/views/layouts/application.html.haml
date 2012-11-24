@@ -48,9 +48,11 @@
   .container
 
     / Announcements
-    - Announcement.current.each do |announcement|
+    - Announcement.current(cookies.signed[:hidden_announcement_ids]).each do |announcement|
       .alert.alert-info
-        = announcement.message
+        %div( data-id="#{ announcement.id }" )
+          = announcement.message
+          = link_to "Dismiss", hide_announcement_path(announcement)
 
     / Flash messages
     - flash.each do |name, msg|

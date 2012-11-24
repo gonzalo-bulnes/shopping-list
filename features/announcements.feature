@@ -5,31 +5,26 @@ Feature: App-Wide Announcements
   great news announced while I use the app. I also want to dismiss
   the announcement when I've read it.
 
-  @current
   Scenario: Display announcement in the shopping list page
     Given there is an announcement
     When I go to the shopping list page
     Then I should see the announcement
 
-  @current
   Scenario: Display announcement in the list of products page
     Given there is an announcement
     When I go to the list of products page
     Then I should see the announcement
 
-  @current
   Scenario: Scheduled announcement
     Given there is an announcement scheduled in the future
     When I go to the shopping list page
     Then I should not see the announcement
 
-  @current
   Scenario: Outdated announcement
     Given there is an outdated announcement
     When I go to the shopping list page
     Then I should not see the announcement
 
-  @current
   Scenario: Dismiss announcement
     Given there is an announcement
     And I am on the shopping list page

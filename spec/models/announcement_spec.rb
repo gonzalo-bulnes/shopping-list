@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Announcement, focus: true do
+describe Announcement do
   it "should have a message" do
     should respond_to :message
   end
@@ -36,6 +36,21 @@ describe Announcement, focus: true do
       upcoming = FactoryGirl.create(:announcement, starts_at: 10.minutes.from_now)
 
       Announcement.current.should eq [current]
+    end
+  end
+
+  describe "'current' method" do
+
+
+    it "should return 'current' scope when no hidden announcements are passed in" do
+      current = FactoryGirl.create(:announcement)
+      Announcement.current(nil).should eq([current])
+    end
+
+    it "should return 'current' scope without the hidden announcements passed in" do
+      current1 = FactoryGirl.create(:announcement)
+      current2 = FactoryGirl.create(:announcement)
+      Announcement.current([current2.id]).should eq([current1])
     end
   end
 end
