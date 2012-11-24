@@ -11,7 +11,7 @@ Given /^there is an outdated announcement$/ do
 end
 
 When /^I dismiss the announcement$/ do
-  within("div[data-id=\"#{@announcement.id}\"]") do
+  within("#announcements div[data-id=\"#{@announcement.id}\"]") do
     click_link "Dismiss"
   end
 end

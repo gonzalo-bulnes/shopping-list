@@ -6,7 +6,7 @@ describe AnnouncementsController do
     # Given there is an announcement
     @announcement = FactoryGirl.create(:announcement)
   end
-  
+
   describe "GET 'hide'" do
 
     it "redirects to the referrer" do

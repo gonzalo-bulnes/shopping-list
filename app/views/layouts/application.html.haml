@@ -48,11 +48,11 @@
   .container
 
     / Announcements
-    - Announcement.current(hidden_announcements).each do |announcement|
-      .alert.alert-info
-        %div( data-id="#{ announcement.id }" )
+    #announcements
+      - Announcement.current(hidden_announcements).each do |announcement|
+        %div.alert.alert-info( data-id="#{ announcement.id }" )
           = announcement.message
-          = link_to "Dismiss", hide_announcement_path(announcement)
+          = link_to "Dismiss", hide_announcement_path(announcement), class: "dismiss", remote: true
 
     / Flash messages
     - flash.each do |name, msg|
