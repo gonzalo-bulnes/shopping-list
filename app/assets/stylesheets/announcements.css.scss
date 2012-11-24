@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.dismiss {
-  float: right;
+#announcements .alert {
+
+  overflow: hidden;
+
+  .dismiss {
+    float: right;
+  }
 }
