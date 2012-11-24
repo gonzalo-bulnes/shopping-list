@@ -6,25 +6,25 @@ Feature: App-Wide Announcements
   the announcement when I've read it.
 
   @current
-  Scenario: Display annoucement in the shopping list page
-    Given there is an annoucement
+  Scenario: Display announcement in the shopping list page
+    Given there is an announcement
     When I go to the shopping list page
-    Then I should see the annoucement
+    Then I should see the announcement
 
   @current
-  Scenario: Display annoucement in the list of products page
-    Given there is an annoucement
+  Scenario: Display announcement in the list of products page
+    Given there is an announcement
     When I go to the list of products page
-    Then I should see the annoucement
+    Then I should see the announcement
 
   @current
-  Scenario: Scheduled annoucement
-    Given there is an annoucement scheduled in the future
+  Scenario: Scheduled announcement
+    Given there is an announcement scheduled in the future
     When I go to the shopping list page
-    Then I should not see the annoucement
+    Then I should not see the announcement
 
   @current
-  Scenario: Outdated annoucement
-    Given there is an outadted annoucement
+  Scenario: Outdated announcement
+    Given there is an outdated announcement
     When I go to the shopping list page
-    Then I should not see the annoucement
+    Then I should not see the announcement
