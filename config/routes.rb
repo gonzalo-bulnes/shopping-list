@@ -5,6 +5,8 @@ SimpleShoppingList::Application.routes.draw do
   get 'shopping_list' => 'shopping_list#index'
   post 'shopping_list' => 'shopping_list#create'
 
+  get 'announcements/:id/hide' => 'announcements#hide', as: 'hide_announcement'
+
   resources :products, only: [:create, :destroy, :index, :new] do
     member do
       post :add, to: 'shopping_list#add_product'

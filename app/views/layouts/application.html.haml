@@ -47,6 +47,13 @@
   / Add your site or application content here
   .container
 
+    / Announcements
+    #announcements
+      - Announcement.current(hidden_announcements).each do |announcement|
+        %div.alert.alert-info( data-id="#{ announcement.id }" )
+          = announcement.message
+          = link_to "Dismiss", hide_announcement_path(announcement), class: "dismiss", remote: true
+
     / Flash messages
     - flash.each do |name, msg|
       .alert{ class: "alert-#{ name == :notice ? 'success' : 'error' }" }
