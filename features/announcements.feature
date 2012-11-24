@@ -28,3 +28,11 @@ Feature: App-Wide Announcements
     Given there is an outdated announcement
     When I go to the shopping list page
     Then I should not see the announcement
+
+  @current
+  Scenario: Dismiss announcement
+    Given there is an announcement
+    And I am on the shopping list page
+    When I dismiss the announcement
+    Then I should not see the announcement
+    And I should not see the announcement on the list of products page
