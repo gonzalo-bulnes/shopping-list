@@ -13,8 +13,13 @@ class ShoppingListController < ApplicationController
       @product.status!(@product, @shopping_list, "pending") 
     end
 
-    request.env['HTTP_REFERER'] ||= products_url
-    redirect_to :back
+    respond_to do |format|
+      format.html do
+        request.env['HTTP_REFERER'] ||= products_url
+        redirect_to :back
+      end
+      format.js
+    end
   end
 
   def create
@@ -41,8 +46,13 @@ class ShoppingListController < ApplicationController
 
     @shopping_list.products.delete(@product) unless @product.nil?
 
-    request.env['HTTP_REFERER'] ||= products_url
-    redirect_to :back
+    respond_to do |format|
+      format.html do
+        request.env['HTTP_REFERER'] ||= products_url
+        redirect_to :back
+      end
+      format.js
+    end
   end
 
   def toggle_status_product
