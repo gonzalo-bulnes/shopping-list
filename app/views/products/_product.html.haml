@@ -5,7 +5,7 @@
 
   - if @product.in_shopping_list?
     %td
-      <a href="#{ remove_product_path(@product) }" data-method="post" data-remote="true" title="Remove from the shopping list" class="btn btn-link custom-btn-icon custom-btn-icon-warning custom-btn-icon-large"><i class="icon-star"></i></a>
+      <a href="#{ remove_product_path(@product) }" data-method="post" data-remote="true" data-action="remove-product-from-shopping-list" title="Remove from the shopping list" class="btn btn-link custom-btn-icon custom-btn-icon-warning custom-btn-icon-large"><i class="icon-star"></i></a>
   - else
     %td
-      <a href="#{ add_product_path(@product) }" data-method="post" data-remote="true" title="Add to the shopping list" class="btn btn-link custom-btn-icon custom-btn-icon-warning custom-btn-icon-large"><i class="icon-star-empty"></i></a>
+      <a href="#{ add_product_path(@product) }" data-method="post" data-remote="true" data-action="add-product-to-shopping-list" title="Add to the shopping list" class="btn btn-link custom-btn-icon custom-btn-icon-warning custom-btn-icon-large"><i class="icon-star-empty"></i></a>
