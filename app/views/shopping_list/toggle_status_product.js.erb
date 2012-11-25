@@ -1,0 +1,21 @@
+// toggle the item status
+
+// select the item
+item = $('#items tr[data-id="<%= j params[:id] %>"]');
+
+// get the item status
+status = item.attr('data-status');
+
+// toggle the item status
+new_status = status == "pending" ? "done" : "pending";
+item.attr('data-status', new_status);
+
+// toggle the item icon
+item.find('a[data-action="toggle-shopping-list-item-status"] i').toggleClass('icon-minus icon-ok');
+
+// toggle the item title
+if (new_status == "pending") {
+  item.find('a[data-action="toggle-shopping-list-item-status"]').attr('title', 'Mark as done');
+} else {
+  item.find('a[data-action="toggle-shopping-list-item-status"]').attr('title', 'Mark as pending');
+}
