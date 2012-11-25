@@ -1,5 +1,13 @@
 // toggle the product 'Add/Remove from the shopping list' icon button
-// toggle the action
-$("#products tr[data-id=\"<%= j params[:id] %>\"] a[data-method=\"post\"]").attr('href', '<%= add_product_path(Product.find(j params[:id])) %>');
-// toggle the icon
-$("#products tr[data-id=\"<%= j params[:id] %>\"] a i").toggleClass('icon-star-empty icon-star');
+
+// get the button
+button = $('#products tr[data-id="<%= j params[:id] %>"] a[data-action="remove-product-from-shopping-list"]');
+
+// toggle the button action
+button.attr('data-action', 'add-product-to-shopping-list');
+button.attr('href', '<%= add_product_path(Product.find(j params[:id])) %>');
+// toggle the button title
+button.attr('title', 'Add to the shopping list');
+
+// toggle the button icon
+button.find('i').toggleClass('icon-star-empty icon-star');
