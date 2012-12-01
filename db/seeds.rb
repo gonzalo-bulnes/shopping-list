@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Create a shopping list (necessary as long as shopping lists can't be created by users)
+ShoppingList.find_or_create_by_id(1)
