@@ -1,6 +1,8 @@
 Simple Shopping List
 ====================
 
+[![Build Status](https://api.travis-ci.org/gonzalo-bulnes/shopping-list.png)](https://travis-ci.org/gonzalo-bulnes/shopping-list)
+
 A simple shopping list.
 
 Credits
