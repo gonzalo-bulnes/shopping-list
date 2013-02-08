@@ -2,6 +2,8 @@ Simple Shopping List
 ====================
 
 [![Build Status](https://api.travis-ci.org/gonzalo-bulnes/shopping-list.png)](https://travis-ci.org/gonzalo-bulnes/shopping-list)
+[![Code Climate](https://codeclimate.com/github/gonzalo-bulnes/shopping-list.png)](https://codeclimate.com/github/gonzalo-bulnes/shopping-list)
+
 
 A simple shopping list.
 
