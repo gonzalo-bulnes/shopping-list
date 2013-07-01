@@ -1,4 +1,5 @@
 require 'spec_helper'
+# http://www.andylindeman.com/2012/11/11/rspec-rails-and-capybara-2.0-what-you-need-to-know.html
 
 describe "Announcements" do
 

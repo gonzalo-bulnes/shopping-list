@@ -1,4 +1,5 @@
 require 'spec_helper'
+# http://www.andylindeman.com/2012/11/11/rspec-rails-and-capybara-2.0-what-you-need-to-know.html
 
 describe "Products Pages:" do
   describe "product list page" do
@@ -51,7 +52,7 @@ describe "Products Pages:" do
 
   describe "new product page" do
     before { visit new_product_path }
-    
+
     it "should have a title" do
       page.should have_selector("h1", text: "New Product")
     end

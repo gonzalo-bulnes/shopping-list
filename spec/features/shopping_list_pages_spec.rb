@@ -1,4 +1,5 @@
 require 'spec_helper'
+# http://www.andylindeman.com/2012/11/11/rspec-rails-and-capybara-2.0-what-you-need-to-know.html
 
 describe "Shopping List Pages:" do
   describe "shopping list page" do
@@ -21,7 +22,7 @@ describe "Shopping List Pages:" do
 
 
       context "and no products are in the shopping list" do
-        
+
         it "shouldn't mention any product" do
           page.should_not have_content "carrots"
           page.should_not have_content "spinach"
@@ -31,7 +32,7 @@ describe "Shopping List Pages:" do
       end
 
       context "and some products are in the shopping list" do
-        
+
         before(:each) do
           # add some products to the shopping list
           post add_product_path( carrots )
