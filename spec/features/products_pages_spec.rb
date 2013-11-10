@@ -51,7 +51,7 @@ describe "Products Pages:" do
 
   describe "new product page" do
     before { visit new_product_path }
-    
+
     it "should have a title" do
       page.should have_selector("h1", text: "New Product")
     end
