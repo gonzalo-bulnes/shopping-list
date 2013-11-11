@@ -1,4 +1,123 @@
-/* Put your CSS here */
-html, body {
+/* Colors by the emberjs.com authors, many thanks to them!
+ * #FAF4F1, #F16F58.
+ */
+
+html , body {
     margin: 20px;
+    background-color: #FAF4F1;
+    font-family: Ubuntu, sans-serif;
+}
+
+/* Layout */
+.table,
+nav {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40rem; /* candidate for media queries */
+}
+
+.table {
+  background-color: #FFFFFF;
+  border-width: 1px;
+  margin-bottom: 1rem;
+}
+.table,
+.table .table-row,
+.table .table-header {
+  border-color: #E8E8E8;
+  border-style: solid;
+}
+.table .table-row,
+.table .table-header {
+  border-width: 1px 0 0;
+  margin: 0;
+  padding-left: 1rem;
+  line-height: 3.6rem;
+  font-size: 1.2rem;
+}
+.table .table-header {
+  border-top-width: 0;
+  line-height: 2.5rem;
+}
+
+/* Table decorations */
+.table,
+.table .table-header {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.table,
+.table .table-row:last-child {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.table .table-header {
+  background-color: #F16F58;
+  color: #FFFFFF;
+}
+.table .table-row {
+  font-weight: bold;
+}
+
+/* Misc */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+form button,
+form label {
+  position: absolute;
+  left: -99999px;
+}
+form input {
+  border-width: 0;
+  /*width: 50%;*/ /* there is no perfect width, but 30rem feels better */
+  width: 30rem;  /* candidate for media queries */
+}
+h1 {
+  display: none;
+}
+
+/* Buttons */
+.btn {
+  width: 3.6rem;
+  text-align: center;
+}
+button.btn {
+  border-width: 0;
+  background-color: #FFFFFF;
+}
+.btn.btn-left {
+  float: left;
+  border-right: 1px solid #E8E8E8;
+  margin-left: -1rem;
+  margin-right: 1rem;
+}
+.btn.btn-right {
+  float: right;
+  border-left: 1px solid #E8E8E8;
+}
+
+/* Features */
+[data-status="done"] {
+  text-decoration: line-through;
+}
+
+/* Navigation */
+nav {
+  overflow: hidden;
+}
+nav a {
+  color: #E1563F;
+  float: left;
+  font-size: 1.5rem;
+  line-height: 3.6rem;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+nav a.active {
+  font-weight: bold;
+  margin-left: 0;
 }
