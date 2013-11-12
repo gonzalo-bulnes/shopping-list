@@ -1,4 +1,4 @@
-describe("ShoppingList.ShoppingList", function() {
+describe("ShoppingList.ShoppingListItem", function() {
 
   beforeEach(function() {
     Ember.testing = true;
