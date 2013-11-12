@@ -1,22 +1,22 @@
 ShoppingList.ShoppingListItem = DS.Model.extend({
   name: DS.attr('string'),
-  isPending: DS.attr('boolean')
+  isDone: DS.attr('boolean')
 });
 
 ShoppingList.ShoppingListItem.FIXTURES = [
  {
    id: 1,
    name: 'Carrots',
-   isPending: true
+   isDone: false
  },
  {
    id: 2,
    name: 'Salad',
-   isPending: false
+   isDone: true
  },
  {
    id: 3,
    name: 'Cucumbers',
-   isPending: false
+   isDone: true
  }
 ];
