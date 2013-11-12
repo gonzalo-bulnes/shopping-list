@@ -1,3 +1,3 @@
-Todos.Router.map(function () {
+ShoppingList.Router.map(function () {
   this.resource('shoppingList', { path: '/' });
 });
