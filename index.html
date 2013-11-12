@@ -30,14 +30,12 @@
     </form>
 
     <ul>
-      <li data-status="done" class="table-row">
-        bicarbonato
-        <span class="btn btn-right"><i class="fa fa-check fa-fw"></i></span>
-      </li>
-      <li data-status="pending" class="table-row">
-        Quitamanchas para ropa blanca
-        <span class="btn btn-right"><i class="fa fa-minus fa-fw"></i></span>
-      </li>
+      {{#each}}
+        <li data-status="done" class="table-row">
+          {{name}}
+          <span class="btn btn-right"><i class="fa fa-check fa-fw"></i></span>
+        </li>
+      {{/each}}
     </ul>
   </div> <!-- .table -->
 
