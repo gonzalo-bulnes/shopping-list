@@ -31,9 +31,9 @@
 
     <ul>
       {{#each}}
-        <li data-status="done" class="table-row">
+        <li {{bind-attr class=":table-row isPending::done"}}>
           {{name}}
-          <span class="btn btn-right"><i class="fa fa-check fa-fw"></i></span>
+          <span class="btn btn-right"><i {{bind-attr class=":fa :fa-fw isPending:fa-minus:fa-check"}}></i></span>
         </li>
       {{/each}}
     </ul>
