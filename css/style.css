@@ -65,13 +65,9 @@ ul {
   padding-left: 0;
   margin: 0;
 }
-form button,
-form label {
-  position: absolute;
-  left: -99999px;
-}
-form input {
+input {
   border-width: 0;
+  outline: none;
   /*width: 50%;*/ /* there is no perfect width, but 30rem feels better */
   width: 30rem;  /* candidate for media queries */
 }
