@@ -1,9 +1,9 @@
-ShoppingList.Router.map(function () {
-  this.resource('shoppingList', { path: '/' });
+App.Router.map(function () {
+  this.resource('shopping_list_items', { path: '/' });
 });
 
-ShoppingList.ShoppingListRoute = Ember.Route.extend({
+App.ShoppingListItemsRoute = Ember.Route.extend({
   model: function () {
-    return this.store.find('shoppingListItem');
+    return this.store.find('shopping_list_item');
   }
 });

@@ -1,3 +1,3 @@
-window.ShoppingList = Ember.Application.create();
+window.App = Ember.Application.create();
 
-ShoppingList.ApplicationAdapter = DS.FixtureAdapter.extend();
+App.ApplicationAdapter = DS.FixtureAdapter.extend();
