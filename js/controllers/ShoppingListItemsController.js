@@ -2,7 +2,7 @@ App.ShoppingListItemsController = Ember.ArrayController.extend({
   actions: {
     createShoppingListItem: function () {
       // Get the shoppingListItem name set by the "New ShoppingListItem" text field
-      var name = this.get('newTitle');
+      var name = this.get('newName');
       if (!name.trim()) { return; }
 
       // Create the new ShoppingListItem model
@@ -12,7 +12,7 @@ App.ShoppingListItemsController = Ember.ArrayController.extend({
       });
 
       // Clear the "New ShoppingListItem" text field
-      this.set('newTitle', '');
+      this.set('newName', '');
 
       // Save the new model
       shoppingListItem.save();
