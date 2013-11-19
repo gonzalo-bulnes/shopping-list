@@ -29,10 +29,11 @@
     </div>
 
     <ul id="shopping-list">
-      {{#each}}
-        <li {{bind-attr class=":table-row isPending::done"}}>
+      {{#each itemController="shopping_list_item"}}
+        <li {{bind-attr class=":table-row isDone:done"}}>
           {{name}}
-          <span class="btn btn-right"><i {{bind-attr class=":fa :fa-fw isPending:fa-minus:fa-check"}}></i></span>
+          {{input type="checkbox" checked=isDone class="btn btn-right"}}
+          <!--<span class="btn btn-right"><i {{bind-attr class=":fa :fa-fw isDone:fa-check:fa-minus"}}></i></span>-->
         </li>
       {{/each}}
     </ul>
@@ -73,6 +74,7 @@
   <script src="js/router.js"></script>
   <script src="js/models/shopping_list_item.js"></script>
   <script src="js/controllers/shopping_list_items_controller.js"></script>
+  <script src="js/controllers/shopping_list_item_controller.js"></script>
 
 </body>
 </html>

@@ -8,7 +8,7 @@ App.ShoppingListItemsController = Ember.ArrayController.extend({
       // Create the new ShoppingListItem model
       var shoppingListItem = this.store.createRecord('shopping_list_item', {
         name: name,
-        isPending: true
+        isDone: true
       });
 
       // Clear the "New ShoppingListItem" text field
