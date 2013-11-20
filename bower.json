@@ -1,0 +1,21 @@
+{
+  "name": "shopping-list",
+  "version": "2.0.0.alpha",
+  "homepage": "https://github.com/gonzalo-bulnes/shopping-list",
+  "authors": [
+    "Gonzalo Bulnes Guilpain <gon.bulnes@gmail.com>"
+  ],
+  "description": "A simple shopping list.",
+  "main": "index.html",
+  "license": "GPLv3 or any later version",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "1.1.2"
+  }
+}
