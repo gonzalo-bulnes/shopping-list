@@ -1,7 +1,12 @@
 Shopping List
 =============
 
-A shopping list.
+[![Build Status](https://travis-ci.org/gonzalo-bulnes/shopping-list.svg?branch=master)](https://travis-ci.org/gonzalo-bulnes/shopping-list)
+[![Code Climate](https://codeclimate.com/github/gonzalo-bulnes/shopping-list/badges/gpa.svg)](https://codeclimate.com/github/gonzalo-bulnes/shopping-list)
+[![Dependency Status](https://gemnasium.com/badges/github.com/gonzalo-bulnes/shopping-list.svg)](https://gemnasium.com/github.com/gonzalo-bulnes/shopping-list)
+[![Inline Docs](http://inch-ci.org/github/gonzalo-bulnes/shopping-list.svg?branch=master&style=shields)](http://inch-ci.org/github/gonzalo-bulnes/shopping-list)
+
+A simple shopping list.
 
 Usage
 -----
