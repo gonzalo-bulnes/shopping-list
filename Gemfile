@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'haml', '~> 4.0'
 gem 'high_voltage', '~> 3.0'
+gem 'rainbow', '~> 2.0'
 
 group :development, :test do
   gem 'byebug', '~> 8.0', platform: :mri

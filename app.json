@@ -1,0 +1,22 @@
+{
+  "name": "Shopping List",
+  "description": "A shopping list.",
+  "keywords": [
+    "token authentication",
+    "devise",
+    "simple_token_authentication",
+    "rails 5",
+    "dredd",
+    "dredd-rack",
+    "API Blueprint"
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate db:seed"
+  },
+  "addons": [],
+  "env": {
+    "LANG": "en_US.UTF-8",
+    "RAILS_ENV": "production"
+  }
+}
+
