@@ -16,6 +16,9 @@ gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'haml', '~> 4.0'
+gem 'high_voltage', '~> 3.0'
+
 group :development, :test do
   gem 'byebug', '~> 8.0', platform: :mri
 end
