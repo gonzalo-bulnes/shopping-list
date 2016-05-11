@@ -1,48 +1,43 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '>= 5.0.0.rc1', '< 5.1'
 
-gem 'haml-rails'
-gem 'pg'
+gem 'pg', '~> 0.18'
+gem 'puma', '~> 3.0'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0', '< 4'
+gem 'coffee-rails', '~> 4.1.0'
 
-gem 'rails-boilerplate'
-gem 'simple_form'
+gem 'jquery-rails', '~> 4.0'
+gem 'turbolinks', '~> 5.x'
+gem 'jbuilder', '~> 2.0'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 3.0'
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
+gem 'haml', '~> 4.0'
+gem 'high_voltage', '~> 3.0'
+gem 'rainbow', '~> 2.0'
+
+group :development, :test do
+  gem 'byebug', '~> 8.0', platform: :mri
+end
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'web-console', '~> 3.0'
+  gem 'listen', '~> 3.0.5'
+  gem 'spring', '~> 1.0'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
 
 group :test do
-  gem 'cucumber-rails', :require => false
-  # database_cleaner is not required, but highly recommended
-  gem 'database_cleaner'
-
-  # to render screenshots from capybara-webkit (requires ImageMagick)
-  gem 'mini_magick'
-  # test associations with rspec
-  gem 'shoulda'
+  gem 'database_cleaner', '~> 1.0'
+  gem 'cucumber-rails', '~> 1.0', :require => false
+  gem 'rspec-rails', '~> 3.0'
 end
 
-group :test, :development do
-  gem "capybara"
-  gem "capybara-webkit"
-  gem "factory_girl_rails", "~> 4.0"
-  gem "rspec-rails", "~> 2.0"
-end
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-
-  gem 'bootstrap-sass'
-  gem 'font-awesome-sass-rails'
-end
-
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
